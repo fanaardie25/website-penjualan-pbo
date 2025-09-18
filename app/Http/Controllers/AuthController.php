@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
+    public function store_register(Request $request)
     {
         $user = new User();
 
@@ -17,19 +17,33 @@ class AuthController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        // return redirect()->route('dashboard');
+        return redirect()->route('dashboard');
 
     }
 
-    public function login(Request $request)
+    public function store_login(Request $request)
     {
         $data = $request->only('email', 'password');
 
         if (Auth::attempt($data)) {
             $request->session()->regenerate();
-            // return redirect()->route('dashboard');
+            return redirect()->route('dashboard');
         } else {
             return redirect()->back()->with('success', 'email atau password anda salah');
         }
+    }
+
+    public function login(){
+        return view('auth.login');
+    }
+
+    public function register(){
+        return view('auth.register');
+    }
+
+     function logout(){
+        Auth::logout();
+
+        return redirect()->route('login');
     }
 }

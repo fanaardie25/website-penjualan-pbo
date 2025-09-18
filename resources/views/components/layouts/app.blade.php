@@ -617,8 +617,10 @@
                                                 class="block w-full h-full object-cover rounded-full">
                                         </div>
                                         <span
-                                            class="flex-none text-slate-600 dark:text-white text-sm font-normal items-center lg:flex hidden overflow-hidden text-ellipsis whitespace-nowrap">Albert
-                                            Flores</span>
+                                            class="flex-none text-slate-600 dark:text-white text-sm font-normal items-center lg:flex hidden overflow-hidden text-ellipsis whitespace-nowrap">
+                                             @if (isset(Auth::user()->name))
+                                                {{ Auth::user()->name }}
+                                            @endif</span>
                                         <svg class="w-[16px] h-[16px] dark:text-white hidden lg:inline-block text-base inline-block ml-[10px] rtl:mr-[10px]"
                                             aria-hidden="true" fill="none" stroke="currentColor"
                                             viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -651,7 +653,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="signin-one.html"
+                                                <a href="{{ route('logout') }}"
                                                     class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
             dark:text-white font-normal">
                                                     <iconify-icon icon="heroicons-outline:login"

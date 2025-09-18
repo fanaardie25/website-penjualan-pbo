@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_admin',
     ];
 
     /**
@@ -32,6 +33,20 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+
+    protected static function boot()
+{
+    parent::boot();
+
+    static::creating(function ($user) {
+        if ($user->email === 'admin@gmail.com') {
+            $user->is_admin = true;
+        }else{
+            $user->is_admin = false;
+        }
+    });
+}
 
     /**
      * Get the attributes that should be cast.
