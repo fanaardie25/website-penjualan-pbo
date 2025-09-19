@@ -15,3 +15,8 @@ Route::middleware('auth')->group(function () {
         return view('welcome');
     })->name('dashboard');
 });
+
+Route::resource('books', App\Http\Controllers\BookController::class);
+Route::get('/dashboard', function () {
+    return view('Dashboard.index');
+})->name('dashboard');

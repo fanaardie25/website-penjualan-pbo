@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -11,7 +13,8 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $books = Book::all();
+        return view('Books.index', compact('books'));
     }
 
     /**
@@ -19,7 +22,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('Books.create');
     }
 
     /**
@@ -27,15 +30,41 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validated = $request->validate([
+            'name'          => 'required|string|max:255',
+            'slug'          => 'required|string|max:255|unique:books,slug',
+            'description'   => 'nullable|string',
+            'writer'        => 'nullable|string|max:255',
+            'publisher'     => 'nullable|string|max:255',
+            'number_page'   => 'nullable|integer|min:1',
+            'price'         => 'required|numeric|min:0',
+            'discount'      => 'nullable|numeric|between:0,100',
+            'after_discount' => 'required|numeric|min:0',
+            'stock'         => 'nullable|integer|min:0',
+            'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('books', 'public');
+            $validated['image'] = $path;
+        }
+
+        Book::create($validated);
+
+        return redirect()
+            ->route('books.index')
+            ->with('success', 'Book created successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(String $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        return view('books.show', compact('book'));
     }
 
     /**
@@ -43,7 +72,8 @@ class BookController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        return view('Books.edit', compact('book'));
     }
 
     /**
@@ -51,7 +81,44 @@ class BookController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $validated = $request->validate([
+            'name'          => 'required|string|max:255',
+            'slug'          => 'required|string|max:255',
+            'description'   => 'nullable|string',
+            'writer'        => 'nullable|string|max:255',
+            'publisher'     => 'nullable|string|max:255',
+            'number_page'   => 'nullable|integer|min:1',
+            'price'         => 'required|numeric|min:0',
+            'discount'      => 'nullable|numeric|between:0,100',
+            'after_discount' => 'required|numeric|min:0',
+            'stock'         => 'nullable|integer|min:0',
+            'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('books', 'public');
+            $validated['image'] = $path;
+        }
+
+
+
+        $book = Book::findOrFail($id);
+
+        if ($request->hasFile('image') && $book->image) {
+            Storage::disk('public')->delete($book->image);
+        }
+
+        if ($request->discount <= 0) {
+            $validated['discount'] = 0;
+        }
+
+        $book->update($validated);
+
+        return redirect()
+            ->route('books.index')
+            ->with('success', 'Book updated successfully.');
     }
 
     /**
@@ -59,6 +126,16 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $book = Book::findOrFail($id);
+
+        if ($book->image) {
+            Storage::disk('public')->delete($book->image);
+        }
+
+        $book->delete();
+
+        return redirect()
+            ->route('books.index')
+            ->with('success', 'Book deleted successfully.');
     }
 }
