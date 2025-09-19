@@ -10,13 +10,17 @@ Route::post('/login/submit', [AuthController::class, 'store_login'])->name('stor
 Route::post('/register/submit', [AuthController::class, 'store_register'])->name('store_register');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Route::middleware('auth')->group(function () {
+//     Route::get('/', function () {
+//         return view('welcome');
+//     })->name('dashboard');
+// });
+
 Route::middleware('auth')->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
+
+    Route::resource('books', App\Http\Controllers\BookController::class);
+
+    Route::get('/dashboard', function () {
+        return view('Dashboard.index');
     })->name('dashboard');
 });
-
-Route::resource('books', App\Http\Controllers\BookController::class);
-Route::get('/dashboard', function () {
-    return view('Dashboard.index');
-})->name('dashboard');
