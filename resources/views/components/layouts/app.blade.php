@@ -87,6 +87,14 @@
                         </a>
                     </li>
                     <li class="">
+                        <a href="{{ route('manage-orders.index') }}" class="navItem {{ request()->is('manage-orders*') ? 'active' : '' }}">
+                            <span class="flex items-center">
+                                <iconify-icon class=" nav-icon" icon="heroicons-outline:shopping-cart"></iconify-icon>
+                                <span>Manage Orders</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="">
                         <a href="javascript:void(0)" class="navItem">
                             <span class="flex items-center">
                                 <iconify-icon class=" nav-icon" icon="heroicons-outline:document"></iconify-icon>

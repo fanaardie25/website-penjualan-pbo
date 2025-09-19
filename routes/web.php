@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ManageOrderController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,6 +20,12 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function () {
 
     Route::resource('books', App\Http\Controllers\BookController::class);
+
+    Route::get('/manage-orders', [App\Http\Controllers\ManageOrderController::class, 'index'])->name('manage-orders.index');
+
+    Route::put('/manage-orders/{user}/{book}/status', [ManageOrderController::class, 'updateStatus'])
+        ->name('orders.update-status');
+
 
     Route::get('/dashboard', function () {
         return view('Dashboard.index');
