@@ -123,6 +123,16 @@
                 </div>
             </div>
 
+                <label for="type_book" class="form-label">Type Book</label>
+            <select name="type_book[]" id="type_book" class="select2 form-control w-full mt-2 py-2" multiple>
+        @foreach ($types as $type)
+            <option value="{{ $type->id }}" 
+                {{ in_array($type->id, $book->types->pluck('id')->toArray()) ? 'selected' : '' }}>
+                {{ $type->name }}
+            </option>
+        @endforeach
+    </select>
+
             {{-- Price --}}
             <div class="input-area">
                 <label for="price" class="form-label">Price</label>

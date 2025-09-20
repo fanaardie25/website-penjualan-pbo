@@ -15,4 +15,8 @@ class Book extends Model
                     ->withPivot('quantity', 'status', 'created_at')
                     ->withTimestamps();
     }
+
+    public function types(){
+        return $this->belongsToMany(Type::class, 'type_books');
+    }
 }

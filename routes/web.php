@@ -30,4 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('Dashboard.index');
     })->name('dashboard');
+
+        Route::resource('type_books', App\Http\Controllers\TypeController::class);
+
 });

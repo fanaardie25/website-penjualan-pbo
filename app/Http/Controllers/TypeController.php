@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TypeController extends Controller
 {
@@ -12,7 +14,9 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::all();
+
+        return view('type_books.index', compact('types'));
     }
 
     /**
@@ -20,7 +24,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        
+        return view('type_books.create');
     }
 
     /**
@@ -29,14 +33,15 @@ class TypeController extends Controller
     public function store(Request $request)
     {
         $type = new Type();
-        $type->name = $request->name();
+        $type->name = $request->name;
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('type', 'public');
         }
 
         $type->image = $imagePath ?? null;
+        $type->save();
 
-        return redirect()->route('');
+        return redirect()->route('type_books.index');
     }
 
     /**
@@ -52,22 +57,44 @@ class TypeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $type_book = Type::find($id);
+
+        return view('type_books.edit', compact('type_book'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
+   public function update(Request $request, $id)
+{
+    $type = Type::findOrFail($id);
+
+    $type->name = $request->name;
+
+    if ($request->hasFile('image')) {
+        // Hapus image lama kalau ada
+        if ($type->image && Storage::disk('public')->exists($type->image)) {
+            Storage::disk('public')->delete($type->image);
+        }
+
+        // Upload image baru
+        $imagePath = $request->file('image')->store('type', 'public');
+        $type->image = $imagePath;
     }
+
+    $type->save();
+
+    return redirect()->route('type_books.index');
+}
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        Type::where('id', $id)->delete();
+
+        return redirect()->route('type_books.index');
     }
 }
