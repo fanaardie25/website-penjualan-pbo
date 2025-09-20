@@ -15,12 +15,12 @@
                     </a>
                 </li>
                 <li class="inline-block relative text-sm text-primary-500 font-Inter ">
-                    Table
+                    Books
                     <iconify-icon icon="heroicons-outline:chevron-right"
                         class="relative top-[3px] text-slate-500 rtl:rotate-180"></iconify-icon>
                 </li>
                 <li class="inline-block relative text-sm text-slate-500 font-Inter dark:text-white">
-                    Basic-Table</li>
+                    {{ $book->name }}</li>
             </ul>
         </div>
         <!-- END: BreadCrumb -->
@@ -54,6 +54,20 @@
                     @endif
                     <div class="text-3xl font-bold text-primary-600 mt-3">
                         Rp {{ number_format($book->after_discount, 0, ',', '.') }}
+                    </div>
+                </div>
+
+                {{-- Types --}}
+                <div>
+                    <h2 class="text-lg font-semibold text-gray-800 mb-2">Categories</h2>
+                    <div class="flex flex-wrap gap-2">
+                        @forelse($book->types as $type)
+                            <span class="bg-primary-100 text-primary-800 px-3 py-1 rounded-full text-sm">
+                                {{ $type->name }}
+                            </span>
+                        @empty
+                            <p class="text-gray-500">No categories assigned.</p>
+                        @endforelse
                     </div>
                 </div>
 

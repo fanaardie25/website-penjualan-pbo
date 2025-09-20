@@ -79,10 +79,10 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="email.html" class="navItem">
+                        <a href="{{ route('type_books.index') }}" class="navItem {{ request()->is('type_books*') ? 'active' : '' }}">
                             <span class="flex items-center">
                                 <iconify-icon class=" nav-icon" icon="heroicons-outline:tag"></iconify-icon>
-                                <span>Discount</span>
+                                <span>Type Books</span>
                             </span>
                         </a>
                     </li>
