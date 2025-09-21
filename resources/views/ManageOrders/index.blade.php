@@ -71,6 +71,7 @@
                                                                 @csrf
                                                                 @method('PUT')
 
+
                                                                 <select name="status" onchange="this.form.submit()"
                                                                     class="px-2 py-1 rounded-md text-sm font-medium border-gray-300 dark:border-slate-600">
                                                                     <option value="pending"

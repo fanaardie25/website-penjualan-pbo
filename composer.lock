@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c514d8f7b9fc5970bdd94287905ef584",
+    "content-hash": "06ca91caa2b8f4e677981ea58995bfc3",
     "packages": [
         {
             "name": "brick/math",
@@ -3347,6 +3347,50 @@
                 "source": "https://github.com/ramsey/uuid/tree/4.9.1"
             },
             "time": "2025-09-04T20:59:21+00:00"
+        },
+        {
+            "name": "sweetalert2/laravel",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sweetalert2/sweetalert2-laravel.git",
+                "reference": "4223eddadf2f65e7a216b1bdf2b9b3a645b63496"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sweetalert2/sweetalert2-laravel/zipball/4223eddadf2f65e7a216b1bdf2b9b3a645b63496",
+                "reference": "4223eddadf2f65e7a216b1bdf2b9b3a645b63496",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^11.0 || ^12.0"
+            },
+            "suggest": {
+                "livewire/livewire": "Required to have the WithSweetAlert trait use Livewire events to show popups on Livewire updates."
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "SweetAlert2\\Laravel\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SweetAlert2\\Laravel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Official SweetAlert2 integration for Laravel framework",
+            "support": {
+                "issues": "https://github.com/sweetalert2/sweetalert2-laravel/issues",
+                "source": "https://github.com/sweetalert2/sweetalert2-laravel/tree/1.0.0"
+            },
+            "time": "2025-08-24T12:37:05+00:00"
         },
         {
             "name": "symfony/clock",

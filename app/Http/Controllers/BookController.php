@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use SweetAlert2\Laravel\Swal;
 use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
@@ -52,6 +53,17 @@ class BookController extends Controller
         }
 
         Book::create($validated);
+
+            Swal::fire([
+                'title' => 'Success !',
+                'position' => 'top-end',
+                'text'  => 'Book created successfully',
+                'icon'  => 'success',
+                'timer' => '3000',
+                'toast' => true,
+                'showConfirmButton' => false,
+                'timerProgressBar' => true,
+            ]);
 
         return redirect()
             ->route('books.index')
@@ -115,6 +127,17 @@ class BookController extends Controller
         }
 
         $book->update($validated);
+
+         Swal::fire([
+            'title' => 'Success !',
+            'position' => 'top-end',
+            'text'  => 'Book updated successfully',
+            'icon'  => 'success',
+            'timer' => '3000',
+            'toast' => true,
+            'showConfirmButton' => false,
+            'timerProgressBar' => true,
+        ]);
 
         return redirect()
             ->route('books.index')

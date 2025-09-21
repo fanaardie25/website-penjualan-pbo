@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\User;
 use Illuminate\Http\Request;
+use SweetAlert2\Laravel\Swal;
 
 class ManageOrderController extends Controller
 {
@@ -24,6 +25,17 @@ class ManageOrderController extends Controller
         
         $user->books()->updateExistingPivot($book->id, [
             'status' => $validated['status'],
+        ]);
+
+        Swal::fire([
+            'title' => 'Success !',
+            'position' => 'top-end',
+            'text'  => 'Status updated successfully',
+            'icon'  => 'success',
+            'timer' => '3000',
+            'toast' => true,
+            'showConfirmButton' => false,
+            'timerProgressBar' => true,
         ]);
 
         return back()->with('success', 'Status updated successfully!');
