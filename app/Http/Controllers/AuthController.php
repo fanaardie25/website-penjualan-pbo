@@ -17,7 +17,13 @@ class AuthController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        return redirect()->route('dashboard');
+        Auth::login($user);
+
+        if(Auth::user()->is_admin == true){
+            return redirect()->route('dashboard');
+        }else{
+            return redirect()->route('home');
+        }
 
     }
 
@@ -25,10 +31,14 @@ class AuthController extends Controller
     {
         $data = $request->only('email', 'password');
 
-        if (Auth::attempt($data)) {
+        if (Auth::attempt($data) && Auth::user()->is_admin == true) {
             $request->session()->regenerate();
             return redirect()->route('dashboard');
-        } else {
+        }elseif(Auth::attempt($data) && Auth::user()->is_admin == false){            
+            $request->session()->regenerate();
+            return redirect()->route('home');
+        }
+         else {
             return redirect()->back()->with('success', 'email atau password anda salah');
         }
     }

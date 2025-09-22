@@ -17,6 +17,10 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 //     })->name('dashboard');
 // });
 
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
+
 Route::middleware('auth')->group(function () {
 
     Route::resource('books', App\Http\Controllers\BookController::class);
