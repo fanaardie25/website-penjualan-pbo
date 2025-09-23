@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use SweetAlert2\Laravel\Swal;
 use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
@@ -69,6 +70,17 @@ class BookController extends Controller
     if ($request->filled('type_book')) {
         $book->types()->attach($request->type_book);
     }
+
+    Swal::fire([
+                'title' => 'Success !',
+                'position' => 'top-end',
+                'text'  => 'Book created successfully',
+                'icon'  => 'success',
+                'timer' => '3000',
+                'toast' => true,
+                'showConfirmButton' => false,
+                'timerProgressBar' => true,
+            ]);
 
     return redirect()
         ->route('books.index')
@@ -146,6 +158,18 @@ class BookController extends Controller
         // Jika tidak ada type yang dipilih, hapus semua relasi
         $book->types()->detach();
     }
+
+    
+         Swal::fire([
+            'title' => 'Success !',
+            'position' => 'top-end',
+            'text'  => 'Book updated successfully',
+            'icon'  => 'success',
+            'timer' => '3000',
+            'toast' => true,
+            'showConfirmButton' => false,
+            'timerProgressBar' => true,
+        ]);
 
     return redirect()
         ->route('books.index')

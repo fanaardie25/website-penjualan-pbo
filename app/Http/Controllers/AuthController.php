@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use SweetAlert2\Laravel\Swal;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
@@ -33,6 +34,16 @@ class AuthController extends Controller
 
         if (Auth::attempt($data) && Auth::user()->is_admin == true) {
             $request->session()->regenerate();
+            Swal::fire([
+                'title' => 'Success !',
+                'position' => 'top-end',
+                'text'  => 'Login successfully',
+                'icon'  => 'success',
+                'timer' => '3000',
+                'toast' => true,
+                'showConfirmButton' => false,
+                'timerProgressBar' => true,
+            ]);
             return redirect()->route('dashboard');
         }elseif(Auth::attempt($data) && Auth::user()->is_admin == false){            
             $request->session()->regenerate();
