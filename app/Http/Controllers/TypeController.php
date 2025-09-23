@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Type;
 use Illuminate\Http\Request;
+use SweetAlert2\Laravel\Swal;
 use Illuminate\Support\Facades\Storage;
 
 class TypeController extends Controller
@@ -40,6 +41,17 @@ class TypeController extends Controller
 
         $type->image = $imagePath ?? null;
         $type->save();
+
+          Swal::fire([
+            'title' => 'Success !',
+            'position' => 'top-end',
+            'text'  => 'Type Book created successfully',
+            'icon'  => 'success',
+            'timer' => '3000',
+            'toast' => true,
+            'showConfirmButton' => false,
+            'timerProgressBar' => true,
+        ]);
 
         return redirect()->route('type_books.index');
     }
@@ -84,6 +96,17 @@ class TypeController extends Controller
 
     $type->save();
 
+      Swal::fire([
+            'title' => 'Success !',
+            'position' => 'top-end',
+            'text'  => 'Type Book updated successfully',
+            'icon'  => 'success',
+            'timer' => '3000',
+            'toast' => true,
+            'showConfirmButton' => false,
+            'timerProgressBar' => true,
+        ]);
+
     return redirect()->route('type_books.index');
 }
 
@@ -94,6 +117,17 @@ class TypeController extends Controller
     public function destroy(string $id)
     {
         Type::where('id', $id)->delete();
+
+            Swal::fire([
+                'title' => 'Success !',
+                'position' => 'top-end',
+                'text'  => 'Type Book deleted successfully',
+                'icon'  => 'success',
+                'timer' => '3000',
+                'toast' => true,
+                'showConfirmButton' => false,
+                'timerProgressBar' => true,
+            ]);
 
         return redirect()->route('type_books.index');
     }

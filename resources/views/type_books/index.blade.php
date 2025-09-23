@@ -1,6 +1,23 @@
  @extends('components.layouts.app')
  @section('title', 'Books Page')
  @section('content')
+      <style>
+         /* CSS khusus untuk swal */
+         .swal-confirm-btn {
+             background-color: #3085d6;
+             color: #fff;
+             padding: 8px 20px;
+             border-radius: 6px;
+             margin-right: 10px;
+         }
+
+         .swal-cancel-btn {
+             background-color: #d33;
+             color: #fff;
+             padding: 8px 20px;
+             border-radius: 6px;
+         }
+     </style>
      <div class="transition-all duration-150 container-fluid" id="page_layout">
          <div id="content_layout">
 
@@ -102,7 +119,7 @@
                                                              </a>
                                                              <form action="{{ route('type_books.destroy', $type->id) }}"
                                                                  method="POST"
-                                                                 onsubmit="return confirm('Are you sure you want to delete this book?');">
+                                                                 onsubmit="return deleteBook(event)">
                                                                  @csrf
                                                                  @method('DELETE')
                                                                  <button class="action-btn" type="submit">
@@ -124,5 +141,31 @@
 
          </div>
      </div>
+
+      <script>
+         function deleteBook(event) {
+             event.preventDefault();
+             const form = event.target;
+
+             Swal.fire({
+                title: 'Delete this book?',
+                text: 'Deleted data cannot be restored!',
+                 icon: 'warning',
+                 showCancelButton: true,
+                 confirmButtonText: 'Ya, hapus!',
+                 cancelButtonText: 'Batal',
+                 customClass: {
+                     confirmButton: 'swal-confirm-btn',
+                     cancelButton: 'swal-cancel-btn'
+                 },
+                 buttonsStyling: false
+             }).then((result) => {
+                 if (result.isConfirmed) {
+                     form.submit();
+                 }
+             });
+
+         }
+     </script>
 
  @endsection
