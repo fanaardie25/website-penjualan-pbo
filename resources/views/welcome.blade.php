@@ -116,59 +116,117 @@
 </section>
 
 <!-- ===================== SECTION KATEGORI ===================== -->
-<section class="max-w-7xl mx-auto px-6 py-6">
+<section class="max-w-7xl mx-auto px-6 py-1">
   <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-6 text-center">
-    
     <!-- Item kategori -->
     <div class="bg-white rounded-2xl p-4 flex flex-col items-center space-y-2 transition-all duration-300 hover:shadow-2xl hover: cursor-pointer">
-      <div class="w-40 h-32 bg-red-100 rounded-full flex items-center justify-center text-2xl">
+      <div class="w-24 h-28 bg-red-100 rounded-full flex items-center justify-center text-2xl">
         <img src="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/highlighted_menu/rero26z6r-.png" alt="">
       </div>
       <span class="text-sm font-medium">Pre Order</span>
     </div>
 
     <div class="bg-white rounded-2xl p-4 flex flex-col items-center space-y-2 transition-all duration-300 hover:shadow-2xl hover: cursor-pointer">
-      <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center text-2xl">
-        🆕
+      <div class="w-24 h-28 bg-yellow-100 rounded-full flex items-center justify-center text-2xl">
+        <img src="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/highlighted_menu/v6ac21ll62.png" alt="">
       </div>
       <span class="text-sm font-medium">New Arrival</span>
     </div>
 
     <div class="bg-white rounded-2xl p-4 flex flex-col items-center space-y-2 transition-all duration-300 hover:shadow-2xl hover: cursor-pointer">
-      <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center text-2xl">
-        📱
+            <div class="w-24 h-28 bg-yellow-100 rounded-full flex items-center justify-center text-2xl">
+        <img src="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/highlighted_menu/2cdo-i51a8.png" alt="">
       </div>
       <span class="text-sm font-medium">Gramedia Digital</span>
     </div>
 
     <div class="bg-white rounded-2xl p-4 flex flex-col items-center space-y-2 transition-all duration-300 hover:shadow-2xl hover: cursor-pointer">
-      <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-2xl">
-        🎒
+      <div class="w-24 h-28 bg-blue-100 rounded-full flex items-center justify-center text-2xl">
+        <img src="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/highlighted_menu/zvz687a199.png" alt="">
       </div>
       <span class="text-sm font-medium">Tas</span>
     </div>
 
     <div class="bg-white rounded-2xl p-4 flex flex-col items-center space-y-2 transition-all duration-300 hover:shadow-2xl hover: cursor-pointer">
-      <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center text-2xl">
-        ✂️
+      <div class="w-24 h-28 bg-purple-100 rounded-full flex items-center justify-center text-2xl">
+        <img src="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/highlighted_menu/6a78z4tv49.png" alt="">
       </div>
       <span class="text-sm font-medium">Stationery</span>
     </div>
 
     <div class="bg-white rounded-2xl p-4 flex flex-col items-center space-y-2 transition-all duration-300 hover:shadow-2xl hover: cursor-pointer">
-      <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center text-2xl">
-        🏀
+      <div class="w-24 h-28 bg-orange-100 rounded-full flex items-center justify-center text-2xl">
+        <img src="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/highlighted_menu/52coaxr1cr.png" alt="">
       </div>
       <span class="text-sm font-medium">Olahraga</span>
     </div>
 
     <div class="bg-white rounded-2xl p-4 flex flex-col items-center space-y-2 transition-all duration-300 hover:shadow-2xl hover: cursor-pointer">
-      <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center text-2xl">
-        🧸
+      <div class="w-24 h-28 bg-teal-100 rounded-full flex items-center justify-center text-2xl">
+        <img src="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/highlighted_menu/32xv351t32.png" alt="">
       </div>
       <span class="text-sm font-medium">Toys</span>
     </div>
+  </div>
+</section>
+<!-- ===================== SECTION KATEGORI TERLARIS ===================== -->
+<section class="max-w-7xl mx-auto px-6 py-8">
+  <!-- Judul -->
+  <h2 class="text-xl font-bold mb-4">Kategori Terlaris</h2>
 
+  <!-- Grid kategori -->
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+
+    <!-- Card kategori -->
+    <div class="relative rounded-lg overflow-hidden group cursor-pointer">
+      <img src="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/product-metas/1-35kal33-.jpg" alt="Komik"
+        class="w-full h-40 object-cover group-hover:scale-105 transition duration-300">
+      <div class="absolute inset-0 bg-black/40 flex items-end p-3">
+        <span class="text-white font-semibold text-sm">Komik Aksi & Petualangan</span>
+      </div>
+    </div>
+
+    <div class="relative rounded-lg overflow-hidden group cursor-pointer">
+      <img src="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/product-metas/1-35kal33-.jpg" alt="Romantis"
+        class="w-full h-40 object-cover group-hover:scale-105 transition duration-300">
+      <div class="absolute inset-0 bg-black/40 flex items-end p-3">
+        <span class="text-white font-semibold text-sm">Fiksi Romantis</span>
+      </div>
+    </div>
+
+    <div class="relative rounded-lg overflow-hidden group cursor-pointer">
+      <img src="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/product-metas/1-35kal33-.jpg" alt="Fantasi"
+        class="w-full h-40 object-cover group-hover:scale-105 transition duration-300">
+      <div class="absolute inset-0 bg-black/40 flex items-end p-3">
+        <span class="text-white font-semibold text-sm">Fiksi Fantasi</span>
+      </div>
+    </div>
+
+    <div class="relative rounded-lg overflow-hidden group cursor-pointer">
+      <img src="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/product-metas/1-35kal33-.jpg" alt="Sejarah"
+        class="w-full h-40 object-cover group-hover:scale-105 transition duration-300">
+      <div class="absolute inset-0 bg-black/40 flex items-end p-3">
+        <span class="text-white font-semibold text-sm">Fiksi Sejarah</span>
+      </div>
+    </div>
+
+    <div class="relative rounded-lg overflow-hidden group cursor-pointer">
+      <img src="https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/product-metas/1-35kal33-.jpg" alt="Misteri"
+        class="w-full h-40 object-cover group-hover:scale-105 transition duration-300">
+      <div class="absolute inset-0 bg-black/40 flex items-end p-3">
+        <span class="text-white font-semibold text-sm">Fiksi Misteri & Detektif</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ===================== SECTION BANNER EBOOK ===================== -->
+<section class="max-w-7xl mx-auto px-6 py-8">
+  <div class="rounded-xl overflow-hidden">
+    <img src="https://image.gramedia.net/rs:fit:0:280/plain/https://static.gramedia.net/_next/static/media/banner-ebook.e479d2f9.png" alt="Banner Ebook"
+      class="w-full object-cover">
   </div>
 </section>
 
